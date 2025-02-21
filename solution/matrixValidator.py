@@ -6,13 +6,13 @@ def check_diagonal_dominance(matrix, n):
     return True
 
 
-def parseMatrixValues(matrix):
+def parseMatrixValues(matrix, precision=6):
     if matrix is None:
         print("Ошибка: матрица не была загружена.")
         exit(1)
 
     try:
-        float_matrix = [[float(element) for element in row] for row in matrix]
+        float_matrix = [[round(float(element), precision) for element in row] for row in matrix]
     except ValueError:
         print("Данные в матрице невалидны")
         exit(1)

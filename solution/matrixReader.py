@@ -4,7 +4,7 @@ def readMatrixFromCIN():
     if size > 20:
         return None
     print("Введите точность: ")
-    accuracy = int(input())
+    accuracy = float(input())
     print("Введите матрицу: ")
     matrix = [input().strip().split(" ") for i in range(size)]
     for i in range(size):
@@ -25,7 +25,7 @@ def readMatrixFromTXT(FilePath):
         if size > 20:
             return None
         print("Введите точность: ")
-        accuracy = int(f.readline())
+        accuracy = float(f.readline())
         matrix = [i.strip().split(" ") for i in f.readlines()]
         for i in range(size):
             try:
