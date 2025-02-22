@@ -12,7 +12,7 @@ def printMainMatrix(matrix):
 def printSupportiveMatrix(matrix):
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
-            print(matrix[i][j], end=" " * 10)
+            print(round(matrix[i][j], 3), end=" " * 10)
         print()
     print()
 

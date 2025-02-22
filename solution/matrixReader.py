@@ -13,12 +13,10 @@ def readMatrixFromCIN():
     matrix = [input().strip().split(" ") for i in range(size)]
     for i in range(size):
         try:
-            #fprint(len(matrix[i]))
             if len(matrix) != size or len(matrix[i]) != size+1:
                 print("Данные чета невалидны")
                 exit(1)
         except IndexError:
-            print("Данные чета невалидны")
             print("Данные чета невалидны")
             exit(1)
     return matrix, accuracy, size

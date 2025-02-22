@@ -1,7 +1,7 @@
 def check_diagonal_dominance(matrix, n):
     for i in range(n):
         sum_non_diag = sum(abs(matrix[i][j]) for j in range(n) if j != i)
-        if abs(matrix[i][i]) <= sum_non_diag:
+        if abs(matrix[i][i]) < sum_non_diag:
             return False
     return True
 
