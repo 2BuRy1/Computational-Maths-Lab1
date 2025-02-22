@@ -6,7 +6,7 @@ def check_diagonal_dominance(matrix, n):
     return True
 
 
-def parseMatrixValues(matrix, precision=6):
+def parseMatrixValues(matrix, precision=3):
     if matrix is None:
         print("Ошибка: матрица не была загружена.")
         exit(1)
@@ -24,12 +24,26 @@ def swap_rows(matrix, row1, row2):
     matrix[row1], matrix[row2] = matrix[row2], matrix[row1]
 
 
-def do_diagonal_dominance(matrix):
-    for i in range(len(matrix)):
-        max_row = i;
-        for j in range(i + 1, len(matrix)):
-            if abs(matrix[j][i]) >= abs(matrix[max_row][i]):
-                swap_rows(matrix, max_row, j)
-        if max_row == i: return None
-    return matrix
+def count_norm(M):
+    res = 0
+    for i in M:
+        res = max(res, sum([abs(j) for j in i]))
+    return res
 
+def do_diagonal_dominance(matrix):
+
+
+    for i in range(len(matrix)):
+        max_row = i
+        for j in range(i + 1, len(matrix)):
+            if abs(matrix[j][i]) > abs(matrix[max_row][i]):
+                max_row = j
+        if max_row != i:
+            swap_rows(matrix, max_row, i)
+
+
+    if not check_diagonal_dominance(matrix, len(matrix)):
+            print("Матрицу нельзя привести к диагонально доминирующему виду.")
+            return None
+
+    return matrix
