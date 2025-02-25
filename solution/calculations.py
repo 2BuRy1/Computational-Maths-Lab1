@@ -19,6 +19,12 @@ def get_accuracy(x_k, x_k1):
     return max(abs(x_k[i] - x_k1[i]) for i in range(len(x_k)))
 
 
+def count_norm(M):
+    res = 0
+    for i in M:
+        res = max(res, sum([abs(j) for j in i]))
+    return res
+
 def main_calculation(C, D, EPS, n):
     iterations = 0
     x_k = D[:]

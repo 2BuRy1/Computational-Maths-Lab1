@@ -4,11 +4,13 @@ import solution.calculations as calculations
 import solution.matrixPrinter as printer
 
 def getData():
-    flag = input("Если хотите вводить данные через файл, напишите f, иначе введите любой символ: ") == "f"
+    letter = input("Если хотите вводить данные через файл, напишите f для считывания матрицы из файла, g для генерации матрицы, иначе введите любой символ: ")
 
-    if flag:
+    if letter == "f":
         print("Введите название файла: ")
         matrix, accuracy, n = reader.readMatrixFromTXT(input().strip())
+    elif letter == "g":
+        matrix, accuracy, n = reader.generateRandomMatrix(int(input("Введите размерность матрицы: ").strip()))
     else:
         matrix, accuracy, n = reader.readMatrixFromCIN()
     return matrix, accuracy, n
@@ -33,7 +35,11 @@ def main():
     printer.printMainMatrix(matrix)
     C, D = calculations.make_C_and_D_matrix(matrix)
 
-    print("Матрица C:")
+    print("\nНорма матрицы:")
+    print(calculations.count_norm(matrix))
+
+
+    print("\nМатрица C:")
     printer.printSupportiveMatrix(C)
 
     print("Матрица D:")
