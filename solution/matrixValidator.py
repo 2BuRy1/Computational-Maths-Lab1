@@ -6,7 +6,7 @@ def check_diagonal_dominance(matrix, n):
     return True
 
 
-def parseMatrixValues(matrix, precision=3):
+def parse_matrix_values(matrix, precision=3):
     if matrix is None:
         print("Ошибка: матрица не была загружена.")
         exit(1)
@@ -31,8 +31,6 @@ def count_norm(M):
     return res
 
 def do_diagonal_dominance(matrix):
-
-
     for i in range(len(matrix)):
         max_row = i
         for j in range(i + 1, len(matrix)):
