@@ -54,5 +54,8 @@ def main():
         print("\nИТОГО\n")
         print(f"\t количество итераций: {k}\n\t ответ с учетом погрешности: {xk}\n\t с округлением: {list([round(i, 3) for i in xk])}")
 
+        if input("Если хотите выйти из программы, напишите exit: ") == "exit":
+            exit(0)
+
 if __name__ == "__main__":
     main()

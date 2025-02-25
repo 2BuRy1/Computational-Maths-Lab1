@@ -10,10 +10,11 @@ def readMatrixFromCIN():
                 print("Размерность должна быть от 1 до 20.")
                 continue
 
-            accuracy = float(input("Введите точность: "))
-            if (accuracy <= 0):
+            accuracy = float(input("Введите точность: ").replace(',', '.'))
+            if accuracy <= 0:
                 print("Точность должна быть больше 0.")
                 continue
+
             print("Введите матрицу: ")
             matrix = [input().strip().split(" ") for _ in range(size)]
 
@@ -21,7 +22,7 @@ def readMatrixFromCIN():
                 print("Вы ввели неверное количество элементов, попробуйте снова: ")
                 continue
 
-            matrix = [[float(el) for el in row] for row in matrix]
+            matrix = [[float(el.replace(',', '.')) for el in row] for row in matrix]
 
             return matrix, accuracy, size
 
@@ -43,17 +44,18 @@ def readMatrixFromTXT(FilePath):
                     print("Размерность должна быть от 1 до 20.")
                     continue
 
-                accuracy = float(f.readline().strip())
-                if(accuracy <= 0):
+                accuracy = float(f.readline().strip().replace(',', '.'))
+                if accuracy <= 0:
                     print("Точность должна быть больше 0, измените содержимое файла и перезапустите программу.")
                     exit(1)
+
                 matrix = [line.strip().split(" ") for line in f.readlines()]
 
                 if len(matrix) != size or any(len(row) != size + 1 for row in matrix):
                     print("Вы ввели неверное количество элементов, попробуйте снова: ")
                     continue
 
-                matrix = [[float(el) for el in row] for row in matrix]
+                matrix = [[float(el.replace(',', '.')) for el in row] for row in matrix]
 
                 return matrix, accuracy, size
 
@@ -70,7 +72,7 @@ def generateRandomMatrix(size, accuracy_range=(0.0001, 1.0), value_range=(-100, 
                 continue
 
             accuracy = round(random.uniform(*accuracy_range), 6)
-            matrix = [[str(random.randint(*value_range)) for _ in range(size + 1)] for _ in range(size)]
+            matrix = [[str(random.randint(*value_range)).replace('.', ',') for _ in range(size + 1)] for _ in range(size)]
 
             return matrix, accuracy, size
 
